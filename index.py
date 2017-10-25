@@ -1,8 +1,10 @@
-from flask import Flask, render_template, url_for
+from flask import render_template
 
-app = Flask(__name__)
+from app import app
+from models import Blog, BlogTag, Tag
 
 
-@app.route("/")
-def hello():
-    return render_template('index.html', test=1)
+@app.route('/')
+def index():
+    return render_template('index.html')
+
