@@ -1,10 +1,11 @@
-from flask import render_template
+from flask import render_template, Blueprint
 
-from app import app
-from models import Blog, BlogTag, Tag
+from models.Blog import Blog
+
+index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 
-@app.route('/')
+@index_page.route('/')
 def index():
-    return render_template('index.html')
-
+    blogs = dict(a='a', b='b')
+    return render_template('index.html', blogs=blogs)
