@@ -7,12 +7,14 @@
 </head>
 <body>
 <div class="content">
-    <form action="/blog/save/" method="post">
-        <label class="label" for="caption">Название</label>
-        <input id="caption" name="caption">
-        <label class="label" for="description">Содержание</label>
-        <input id="description" name="description">
-        <input class="button" type="submit" value="Сохранить">
+    <form class="form" action="/blog/save/" method="post">
+        <div class="row">
+            <label class="label" for="caption">Название</label>
+            <input id="caption" class="small-5 columns" type="text" name="caption">
+            <label class="label" for="description">Содержание</label>
+            <textarea id="description" class="small-5 columns" name="description"></textarea>
+            <input class="button" type="submit" value="Сохранить">
+        </div>
     </form>
     {% for blog in blogs %}
         <div class="row">

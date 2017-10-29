@@ -16,7 +16,7 @@ class Blog(db.Model):
         self.caption = caption
         self.description = description
 
-    def save(self,):
+    def save(self):
         blog = Blog(self.caption, self.description)
         db.session.add(blog)
         db.session.commit()

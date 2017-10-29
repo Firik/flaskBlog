@@ -6,9 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object(os.environ['APP_SETTINGS'])
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 dbp = DebugToolbarExtension(app)
 
-from index import index_page
-app.register_blueprint(index_page)
+from index import blog_page
+app.register_blueprint(blog_page)
