@@ -15,3 +15,12 @@ class Blog(db.Model):
     def __init__(self, caption, description):
         self.caption = caption
         self.description = description
+
+    def save(self,):
+        blog = Blog(self.caption, self.description)
+        db.session.add(blog)
+        db.session.commit()
+
+    @staticmethod
+    def get_blogs():
+        return Blog.query.with_entities(Blog.caption, Blog.description, Blog.dt_create)
