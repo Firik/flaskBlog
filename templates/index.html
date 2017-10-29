@@ -6,13 +6,20 @@
     <title>Main page</title>
 </head>
 <body>
-<div class="row">
-
-    <div class="small-3 columns">1</div>
-    <div class="small-3 columns">2</div>
-    <div class="small-3 columns">3</div>
+<div class="content">
+    <form action="/blog/save/" method="post">
+        <label class="label" for="caption">Название</label>
+        <input id="caption" name="caption">
+        <label class="label" for="description">Содержание</label>
+        <input id="description" name="description">
+        <input class="button" type="submit" value="Сохранить">
+    </form>
     {% for blog in blogs %}
-        {{ blog.a }}
+        <div class="row">
+            <div class="small-5 columns">{{ blog.caption }}</div>
+            <div class="small-5 columns">{{ blog.description }}</div>
+            <div class="small-5 columns">{{ blog.dt_create }}</div>
+        </div>
     {% endfor %}
 </div>
 </body>
