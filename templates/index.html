@@ -6,14 +6,19 @@
     <title>Main page</title>
 </head>
 <body>
-<div class="content">
+<div class="grid-container">
     <form class="form" action="/blog/save/" method="post">
-        <div class="row">
-            <label class="label" for="caption">Название</label>
-            <input id="caption" class="small-5 columns" type="text" name="caption">
-            <label class="label" for="description">Содержание</label>
-            <textarea id="description" class="small-5 columns" name="description"></textarea>
-            <input class="button" type="submit" value="Сохранить">
+        <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+                <label class="label" for="caption">Название</label>
+                <input id="caption" class="small-5 columns" type="text" name="caption">
+                <label class="label" for="description">Содержание</label>
+                <textarea id="description" class="small-5 columns" name="description"></textarea>
+                <div class="small-4 medium-offset-8 cell">
+                    <a class="clear button" href="/">Отмена</a>
+                    <input class="button success" type="submit" value="Сохранить">
+                </div>
+            </div>
         </div>
     </form>
     {% for blog in blogs %}
