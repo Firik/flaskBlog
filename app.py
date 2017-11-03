@@ -9,5 +9,5 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 db = SQLAlchemy(app)
 dbp = DebugToolbarExtension(app)
 
-from index import blog_page
-app.register_blueprint(blog_page)
+from index import index_page
+app.register_blueprint(index_page)

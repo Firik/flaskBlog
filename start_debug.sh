@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
-source ~/.venv/flaskBlog/bin/activate
+##!/usr/bin/env bash
+#source ~/.venv/flaskBlog/bin/activate
+sudo systemctl start postgresql.service
 export FLASK_APP=app.py
 export APP_SETTINGS="config.DevelopmentConfig"
 #export FLASK_DEBUG=1

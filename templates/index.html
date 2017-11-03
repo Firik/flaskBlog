@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/foundation.css') }}">
-    <title>Main page</title>
-</head>
-<body>
-<div class="grid-container">
-    <form class="form" action="/blog/save/" method="post">
-        <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
-                <label class="label" for="caption">Название</label>
-                <input id="caption" class="small-5 columns" type="text" name="caption">
-                <label class="label" for="description">Содержание</label>
-                <textarea id="description" class="small-5 columns" name="description"></textarea>
-                <div class="small-4 medium-offset-8 cell">
-                    <a class="clear button" href="/">Отмена</a>
-                    <input class="button success" type="submit" value="Сохранить">
-                </div>
-            </div>
-        </div>
-    </form>
+{% extends 'layout.html' %}
+
+{% block title %}Главная страница{% endblock %}
+{% block content %}
+    <a href="{{ url_for('index_page.add') }}">Добавить</a>
     {% for blog in blogs %}
         <div class="row">
             <div class="small-5 columns">{{ blog.caption }}</div>
@@ -28,6 +10,4 @@
             <div class="small-5 columns">{{ blog.dt_create }}</div>
         </div>
     {% endfor %}
-</div>
-</body>
-</html>
+{% endblock %}

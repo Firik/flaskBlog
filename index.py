@@ -1,19 +1,31 @@
-from flask import render_template, Blueprint, request, redirect
+from flask import render_template, Blueprint, request, redirect, flash, url_for
+from sqlalchemy.exc import IntegrityError
 
 from models.Blog import Blog
 
-blog_page = Blueprint('index_page', __name__, template_folder='templates')
+index_page = Blueprint('index_page', __name__, template_folder='templates')
 
 
-@blog_page.route('/')
+@index_page.route('/')
 def index():
     return render_template('index.html', blogs=Blog.get_blogs())
 
 
-@blog_page.route('/blog/save/', methods=['POST'])
+@index_page.route('/blog/add/', methods=['GET'])
+def add():
+    return render_template('add_blog_form.html')
+
+
+@index_page.route('/blog/save/', methods=['POST'])
 def save_blog():
+    url = '/'
     if request.method == 'POST':
         blog = Blog(request.form.get('caption'), request.form.get('description'))
-        blog.save()
 
-    return redirect('/')
+        try:
+            blog.save()
+        except IntegrityError:
+            flash('Запись не сохранена')
+            url = url_for('index_page.add')
+
+    return redirect(url)
