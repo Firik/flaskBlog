@@ -1,0 +1,11 @@
+body {
+    background-color: #eee;
+}
+
+.cell {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px;
+    border-bottom: 5px #222 inset;
+    border-right: 5px grey inset;
+}

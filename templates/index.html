@@ -2,12 +2,14 @@
 
 {% block title %}Главная страница{% endblock %}
 {% block content %}
-    <a href="{{ url_for('index_page.add') }}">Добавить</a>
-    {% for blog in blogs %}
-        <div class="row">
-            <div class="small-5 columns">{{ blog.caption }}</div>
-            <div class="small-5 columns">{{ blog.description }}</div>
-            <div class="small-5 columns">{{ blog.dt_create }}</div>
-        </div>
-    {% endfor %}
+    <div class="grid-x">
+        <a href="{{ url_for('index_page.add') }}">Добавить</a>
+        {% for blog in blogs %}
+            <div class="cell">
+                <h3>{{ blog.caption }}</h3>
+                <h4><small>{{ blog.dt_create }}</small></h4>
+                <div>{{ blog.description }}</div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
