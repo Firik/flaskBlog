@@ -20,7 +20,15 @@ def add():
 def save_blog():
     url = '/'
     if request.method == 'POST':
-        blog = Blog(request.form.get('caption'), request.form.get('description'))
+        caption = request.form.get('caption')
+        description = request.form.get('description')
+
+        if not caption or not description:
+            url = url_for('index_page.add')
+            flash('Запись не сохранена')
+            return redirect(url)
+
+        blog = Blog(caption, description)
 
         try:
             blog.save()

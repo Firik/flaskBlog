@@ -1,20 +1,21 @@
 {% extends "layout.html" %}
 
 {% block title %}Добавить запись{% endblock %}
-{% include 'flash_messages.html' %}
+
 {% block content %}
-    <form class="form" action="{{ url_for('index_page.save_blog') }}" method="post">
-        <div class="grid-x grid-padding-x">
-            <div class="medium-6 cell">
+    <div class="grid-x align-center">
+        <div class="small-12 medium-6">
+            {% include 'flash_messages.html' %}
+            <form class="form" action="{{ url_for('index_page.save_blog') }}" method="post">
                 <label class="label" for="caption">Название</label>
                 <input id="caption" class="small-5 columns" type="text" name="caption">
                 <label class="label" for="description">Содержание</label>
-                <textarea id="description" class="small-5 columns" name="description"></textarea>
-                <div class="small-4 medium-offset-8 cell">
+                <textarea id="description" class="small-5 columns" name="description" rows="10"></textarea>
+                <div class="small-4 medium-offset-8">
                     <a class="clear button" href="/">Отмена</a>
                     <input class="button success" type="submit" value="Сохранить">
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 {% endblock %}
