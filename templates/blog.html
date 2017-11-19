@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ blog.caption }}{% endblock %}
+{% block content %}
+    <div class="grid-x">
+        <div class="cell">
+            <h4>{{ blog.caption }}</h4>
+            <h5><small>{{ blog.dt_create }}</small></h5>
+            <div>{{ blog.description }}</div>
+        </div>
+    </div>
+{% endblock %}

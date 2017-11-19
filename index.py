@@ -28,12 +28,18 @@ def save_blog():
             flash('Запись не сохранена')
             return redirect(url)
 
-        blog = Blog(caption, description)
+        blog_object = Blog(caption, description)
 
         try:
-            blog.save()
+            blog_object.save()
         except IntegrityError:
             flash('Запись не сохранена')
             url = url_for('index_page.add')
 
     return redirect(url)
+
+
+@index_page.route('/blog/<int:blog_id>/')
+def show_blog(blog_id):
+    blog_object = Blog.query.get(blog_id)
+    return render_template('blog.html', blog=blog_object)

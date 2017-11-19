@@ -6,8 +6,8 @@
         <a href="{{ url_for('index_page.add') }}">Добавить</a>
         {% for blog in blogs %}
             <div class="cell">
-                <h3>{{ blog.caption }}</h3>
-                <h4><small>{{ blog.dt_create }}</small></h4>
+                <h4><a href="{{ url_for('index_page.show_blog', blog_id=blog.blog_id) }}">{{ blog.caption }}</a></h4>
+                <h5><small>{{ blog.dt_create }}</small></h5>
                 <div>{{ blog.description }}</div>
             </div>
         {% endfor %}
