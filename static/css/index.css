@@ -8,3 +8,10 @@ body {
     padding: 10px;
     box-shadow: 5px 5px rgba(85, 85, 85, 0.78);
 }
+
+.blog-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}

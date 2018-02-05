@@ -6,7 +6,10 @@
         <a href="{{ url_for('index_page.add') }}">Добавить</a>
         {% for blog in blogs %}
             <div class="cell">
-                <h4><a href="{{ url_for('index_page.show_blog', blog_id=blog.blog_id) }}">{{ blog.caption }}</a></h4>
+                <div class="blog-header">
+                    <h4><a href="{{ url_for('index_page.show_blog', blog_id=blog.blog_id) }}">{{ blog.caption }}</a></h4>
+                    <a href="{{ url_for('index_page.delete_blog', blog_id=blog.blog_id) }}" class="blog-header-button-delete">X</a>
+                </div>
                 <h5><small>{{ blog.dt_create }}</small></h5>
                 <div>{{ blog.description }}</div>
             </div>

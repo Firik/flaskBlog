@@ -28,13 +28,38 @@ def save_blog():
             flash('Запись не сохранена')
             return redirect(url)
 
-        blog_object = Blog(caption, description)
-
         try:
-            blog_object.save()
+            blog_object = Blog()
+            blog_object.set_caption(caption)
+            blog_object.set_description(description)
+            Blog.save(blog_object)
         except IntegrityError:
             flash('Запись не сохранена')
             url = url_for('index_page.add')
+
+    return redirect(url)
+
+
+@index_page.route('/blog/delete/<int:blog_id>/', methods=['GET'])
+def delete_blog(blog_id):
+    url = '/'
+    if request.method == 'GET':
+        if not blog_id:
+            url = url_for('index_page.index')
+            flash('Не удалось удалить запись')
+            return redirect(url)
+
+        blog_object = Blog.query.get(blog_id)
+        if not blog_object:
+            url = url_for('index_page.index')
+            flash('Не удалось найти запись')
+            return redirect(url)
+
+        try:
+            Blog.delete(blog_object)
+        except IntegrityError:
+            flash('Не удалось удалить запись')
+            url = url_for('index_page.index')
 
     return redirect(url)
 

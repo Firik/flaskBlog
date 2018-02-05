@@ -13,15 +13,22 @@ class Blog(db.Model):
     dt_create = db.Column(db.DateTime, nullable=False, default=now)
     dt_change = db.Column(db.DateTime, default=now)
 
-    def __init__(self, caption, description):
+    def set_caption(self, caption):
         if len(caption) > self.caption_length:
             caption = caption[:self.caption_length]
         self.caption = caption
+
+    def set_description(self, description):
         self.description = description
 
-    def save(self):
-        blog = Blog(self.caption, self.description)
-        db.session.add(blog)
+    @staticmethod
+    def save(blog_object):
+        db.session.add(blog_object)
+        db.session.commit()
+
+    @staticmethod
+    def delete(blog_object):
+        db.session.delete(blog_object)
         db.session.commit()
 
     @staticmethod
